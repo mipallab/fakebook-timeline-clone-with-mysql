@@ -1,0 +1,57 @@
+<div class="post-comment-area">
+    <div class="comment-item">
+        <div class="parent-comment">
+            <img class="auth"
+                src="https://t3.ftcdn.net/jpg/00/17/30/74/360_F_17307408_RcdYtwlTOMmQAqqqYLZkJBDgb1SKHOXZ.jpg"
+                alt="">
+            <div class="comment-data">
+                <a href="#">Majadul Islam </a>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa maxime
+                    veniam cum exercitationem unde magnam!</p>
+
+                <img class="com-photo"
+                    src="https://t3.ftcdn.net/jpg/00/17/30/74/360_F_17307408_RcdYtwlTOMmQAqqqYLZkJBDgb1SKHOXZ.jpg"
+                    alt="">
+
+                <p class="time-ago"> ${timeAgo(
+                item.comment_created_at
+                )} </p>
+                <div class="com-info">
+                    <div class="lcount"><span>10</span>
+                    </div>
+                    <div class="like"><a href="com_like.php?like_id=">
+                            Like</a></div>
+                    <div class="replay"><span data-bs-target="#commentReplayModal"
+                            data-bs-toggle="modal" comment_r_id="33">replay</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="child-comment">
+            <img class="auth"
+                src="https://t3.ftcdn.net/jpg/00/17/30/74/360_F_17307408_RcdYtwlTOMmQAqqqYLZkJBDgb1SKHOXZ.jpg"
+                alt="">
+            <div class="comment-data">
+                <a href="23">
+                    Rahimul Islam</a>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+
+                <img class="com-photo"
+                    src="https://t3.ftcdn.net/jpg/00/17/30/74/360_F_17307408_RcdYtwlTOMmQAqqqYLZkJBDgb1SKHOXZ.jpg"
+                    alt="">
+
+                <p class="time-ago"> ${timeAgo(
+                item.comment_created_at
+                )}</p>
+                </p>
+                <div class="com-info">
+                    <div class="lcount"><span>10</span>
+                    </div>
+                    <div class="like"><a href="replay-like.php?like_id=43">
+                            Like</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
