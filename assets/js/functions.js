@@ -277,6 +277,13 @@ function renderComments(commentsArray) {
                           ? `<img src="./assets/images/post-images/${comment.comment_image}" alt="Comment Image" class="comment-image">`
                           : ""
                       }
+                      ${
+                        comment.comment_video_url
+                          ? `<video width="320" height="240" controls>
+                <source src="assets/images/post-videos/${comment.comment_video_url}" type="video/mp4">
+            </video>`
+                          : ""
+                      }
                       <p class="time-ago">${timeAgo(
                         comment.comment_created_at
                       )}</p>

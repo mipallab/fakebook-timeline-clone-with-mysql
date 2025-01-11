@@ -11,8 +11,7 @@ $(document).ready(function () {
         function timeLineFetch(item) {
           let post_image = JSON.parse(item.post_image) || "";
           let post_video = JSON.parse(item.post_video_url) || "";
-          let post_comment = item.comments || "";
-          console.log("Post comment:" + post_comment);
+
           return `<div class="user-post">
                       <div class="user-post-header">
                           <div class="post-info">
@@ -142,38 +141,6 @@ $(document).ready(function () {
                                                       xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 16 16">
                                                       <defs>
                                                           <linearGradient id="a" x1="50%" x2="50%" y1="0%" y2="100%">
-                                                              <stop offset="0%" stop-color="#FF6680" />
-                                                              <stop offset="100%" stop-color="#E61739" />
-                                                          </linearGradient>
-                                                          <filter id="c" width="118.8%" height="118.8%" x="-9.4%"
-                                                              y="-9.4%" filterUnits="objectBoundingBox">
-                                                              <feGaussianBlur in="SourceAlpha"
-                                                                  result="shadowBlurInner1" stdDeviation="1" />
-                                                              <feOffset dy="-1" in="shadowBlurInner1"
-                                                                  result="shadowOffsetInner1" />
-                                                              <feComposite in="shadowOffsetInner1" in2="SourceAlpha"
-                                                                  k2="-1" k3="1" operator="arithmetic"
-                                                                  result="shadowInnerInner1" />
-                                                              <feColorMatrix in="shadowInnerInner1"
-                                                                  values="0 0 0 0 0.710144928 0 0 0 0 0 0 0 0 0 0.117780134 0 0 0 0.349786932 0" />
-                                                          </filter>
-                                                          <path id="b" d="M8 0a8 8 0 100 16A8 8 0 008 0z" />
-                                                      </defs>
-                                                      <g fill="none">
-                                                          <use fill="url(#a)" xlink:href="#b" />
-                                                          <use fill="black" filter="url(#c)" xlink:href="#b" />
-                                                          <path fill="white"
-                                                              d="M10.473 4C8.275 4 8 5.824 8 5.824S7.726 4 5.528 4c-2.114 0-2.73 2.222-2.472 3.41C3.736 10.55 8 12.75 8 12.75s4.265-2.2 4.945-5.34c.257-1.188-.36-3.41-2.472-3.41" />
-                                                      </g>
-                                                  </svg>
-                                              </a>
-                                          </li>
-                                          <li>
-                                              <a href="#">
-                                                  <svg xmlns="http://www.w3.org/2000/svg"
-                                                      xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 16 16">
-                                                      <defs>
-                                                          <linearGradient id="a" x1="50%" x2="50%" y1="0%" y2="100%">
                                                               <stop offset="0%" stop-color="#18AFFF" />
                                                               <stop offset="100%" stop-color="#0062DF" />
                                                           </linearGradient>
@@ -219,7 +186,9 @@ $(document).ready(function () {
                                       <span>Like</span>
                                   </li>
 
-                                  <li data-bs-toggle="modal" data-bs-target="#commentModal">
+                                  <li class="comment-item" data-bs-toggle="modal" data-bs-target="#commentModal" postId="${
+                                    item.post_id
+                                  }">
                                       <span class="comment-icon"></span>
                                       <span>Comment</span>
                                   </li>
@@ -232,8 +201,9 @@ $(document).ready(function () {
                           </div>
                           <div class="divider-0"></div>
                           <div class="comments-area">
-                              ${renderComments(JSON.parse(item.comments))}
-                            
+                              ${renderComments(
+                                JSON.parse(item.comments)
+                              )}                        
 
                           </div>
                       </div>

@@ -288,7 +288,7 @@ if (file_exists(__DIR__ . '/autoload.php')) {
                                 name="comment_pro_photo">
                         </div>
                         <div class="mb-3">
-                            <input id="comment_id" class="form-control" type="hidden" name="post_id" value="">
+                            <input id="post_id_pass" class="form-control" type="text" name="post_id" value="">
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="comment-images">Comment Image</label>
@@ -363,6 +363,34 @@ if (file_exists(__DIR__ . '/autoload.php')) {
     <script src="./assets/js/ajax/insert-comment.js"></script>
     <script src="./assets/js/ajax/timeline.js"></script>
     <script src="./assets/js/main.js"></script>
+
+    <script>
+    // document.body.addEventListener('click', function() {
+    //     // post id pass in comment form
+    //     const li = document.querySelectorAll(".comment-item");
+    //     const input = document.getElementById('post_id_pass');
+
+    //     console.log("comment-item : " + li);
+    //     console.log(input);
+
+    //     li.forEach(item => {
+    //         item.onclick = (event) => {
+    //             input.value = event.target.getAttribute('postId');
+
+    //             console.log(input);
+    //         }
+    //     });
+    // });
+
+
+    $(document).on("click", ".comment-item", function() {
+        const postId = $(this).attr("postId");
+        const input = document.getElementById('post_id_pass');
+
+        input.value = postId;
+
+    });
+    </script>
 </body>
 
 </html>

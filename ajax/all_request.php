@@ -90,40 +90,41 @@ switch ($action) {
         $comm_pVideos = $_FILES['comment_video'] ?? [];
 
 
-        if (!empty($comm_name) && !empty($comm_pPhoto['name'] && (!empty($comm_postContent) || !empty($comm_pPhotos['name'][0]) || !empty($comm_pVideos['name'][0])))) {
+        if (!empty($post_id) && !empty($comm_name) && !empty($comm_pPhoto['name'] && (!empty($comm_postContent) || !empty($comm_pPhotos['name'][0]) || !empty($comm_pVideos['name'][0])))) {
 
-            // has post photos
-            if (!empty($pPhotos['name'][0])) {
+            // has comment photos
+            $comment_photo = '';
+            if (!empty($comm_pPhotos['name'][0])) {
                 // upload post photos files
-                $postPhotos = uploadFiles($pPhotos, '../assets/images/post-images/', ['jpg', 'png', 'jpeg', 'gif'], 10485760);
+                $comment_photo =  move($comm_pPhotos, '../assets/images/post-images/', ['jpg', 'png', 'jpeg', 'gif']);
             } else {
-                $postPhotos = [];
+                $comment_photo = NULL;
             }
 
-            // has post videos
-            if (!empty($pVideos['name'][0])) {
+            // has comment videos
+            $comment_video = '';
+            if (!empty($comm_pVideos['name'][0])) {
                 // upload post video 
-                $postVideos = uploadFiles($pVideos, '../assets/images/post-videos/', ['mp4', 'mkv'], 10485760);
+                $comment_video = move($comm_pVideos, '../assets/images/post-videos/', ['mp4', 'mkv']);
             } else {
-                $postVideos = [];
+                $comment_video = NULL;
             }
 
             // upload profile photo
-            $proPhoto = move($pPhoto, '../assets/images/profile-images/', ['jpg', 'png', 'jpeg', 'gif']);
+            $proPhoto = move($comm_pPhoto, '../assets/images/profile-images/', ['jpg', 'png', 'jpeg', 'gif']);
 
 
-
-
-            // insert data into database
+            // insert comment into database
             $data = [
-                'name' => $name,
-                'post_text' => $postContent,
-                'profile_picture_url' => $proPhoto,
-                'post_image' => json_encode($postPhotos),
-                'post_video_url' => json_encode($postVideos)
+                'post_id' => $post_id,
+                'name' => $comm_name,
+                'comment_text' => $comm_postContent,
+                'profile_picture_url' => $proPhoto ?? null,
+                'comment_image' => $comment_photo,
+                'comment_video_url' => $comment_video
             ];
 
-            $lastInsertId = insertQuery('posts', $data, $connect);
+            $lastInsertId = insertQuery('comments', $data, $connect);
             echo json_encode([
                 "status" => "success",
                 'message'   => "Post submit successfully"
