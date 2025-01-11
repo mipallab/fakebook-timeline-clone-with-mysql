@@ -295,8 +295,10 @@ function renderComments(commentsArray) {
                           </div>
                           <div class="like"><a href="com_like.php?like_id=">
                                   Like</a></div>
-                          <div class="replay"><span data-bs-target="#commentReplayModal"
-                                  data-bs-toggle="modal" comment_r_id="33">replay</span>
+                          <div class="replay"><span id="replay-comment-modal" data-bs-target="#commentReplayModal"
+                                  data-bs-toggle="modal" comment_r_id="${
+                                    comment.comment_id
+                                  }">replay</span>
                           </div>
                       </div>
                     </div>
@@ -323,7 +325,9 @@ function renderReplies(repliesJSON) {
                 reply.reply_user_photo
               }" alt="${reply.reply_user_name}" class="reply-user-photo">
               <div class="reply-content">
-                  <span class="reply-user-name">${reply.reply_user_name}</span>
+                  <a href="#" class="reply-user-name">${
+                    reply.reply_user_name
+                  }</a>
                   <p class="reply-text">${
                     reply.reply_text ? reply.reply_text : ""
                   }</p>

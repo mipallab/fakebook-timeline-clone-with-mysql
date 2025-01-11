@@ -127,7 +127,7 @@ switch ($action) {
             $lastInsertId = insertQuery('comments', $data, $connect);
             echo json_encode([
                 "status" => "success",
-                'message'   => "Post submit successfully"
+                'message'   => "Comment submit successfully"
             ]);
         } else {
             echo json_encode([
@@ -140,9 +140,71 @@ switch ($action) {
         break;
 
         /**
-         * 
-         *  Show All Post
+         * #########################################
+         *  ---------- Replay Comment -------------
+         * ########################################
          */
+
+    case "replay-comment":
+
+        // get data
+        $replay_comm_name = $_POST['comm_rep_usr_name'] ?? null;
+        $replay_comm_postContent = $_POST['comment-rep-content'] ?? null;
+        $post_id = $_POST['postID'] ?? null;
+        $parent_comment_id = $_POST['com_id'] ?? null;
+
+        // get files
+        $replay_comm_profile_Photo = $_FILES['comment_rep_usr_photo'] ?? null;
+        $replay_comm_post_Photo = $_FILES['comment-rep-post-photo'] ?? NULL;
+
+
+
+        if (!empty($parent_comment_id) && !empty($replay_comm_name) && !empty($replay_comm_profile_Photo['name'] && (!empty($replay_comm_postContent) || !empty($replay_comm_post_Photo['name'])))) {
+
+            // has reply comment photos
+            $comment_photo = '';
+            if (!empty($replay_comm_post_Photo['name'])) {
+                // upload post photos files
+                $comment_photo =  move($replay_comm_post_Photo, '../assets/images/post-images/', ['jpg', 'png', 'jpeg', 'gif']);
+            } else {
+                $comment_photo = NULL;
+            }
+
+            // upload profile photo
+            $proPhoto = move($replay_comm_profile_Photo, '../assets/images/profile-images/', ['jpg', 'png', 'jpeg', 'gif']);
+
+
+            // insert reply comment into database
+            $data = [
+                'post_id' => $post_id,
+                'parent_comment_id' => $parent_comment_id,
+                'name' => $replay_comm_name,
+                'comment_text' => $replay_comm_postContent,
+                'profile_picture_url' => $proPhoto ?? null,
+                'comment_image' => $comment_photo
+            ];
+
+            $lastInsertId = insertQuery('comments', $data, $connect);
+            echo json_encode([
+                "status" => "success",
+                'message'   => "Comment submit successfully"
+            ]);
+        } else {
+            echo json_encode([
+                "status" => "error",
+                'message'   => 'Field\'s are require!'
+            ]);
+        }
+
+
+        break;
+
+        /**
+         * #########################################
+         *  ---------- Show All Post -------------
+         * ########################################
+         */
+
     case "all-data":
 
         // show all data

@@ -1689,14 +1689,10 @@ span.camera-icon {
   font-size: 12px;
 }
 
-.replay-user-photo {}
-
-.reply-content {}
-
-.replay-user-name {}
-
-.replay-text {}
-
-.replay-time {}
-
-.replay-likes {}
+.reply-user-name {
+  font-weight: 700;
+  font-size: 14px;
+}
+.reply-user-name:hover {
+  text-decoration: underline;
+}

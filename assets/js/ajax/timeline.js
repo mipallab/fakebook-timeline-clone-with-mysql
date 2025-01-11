@@ -186,7 +186,7 @@ $(document).ready(function () {
                                       <span>Like</span>
                                   </li>
 
-                                  <li class="comment-item" data-bs-toggle="modal" data-bs-target="#commentModal" postId="${
+                                  <li class="comment-item comment-modal" data-bs-toggle="modal" data-bs-target="#commentModal" postId="${
                                     item.post_id
                                   }">
                                       <span class="comment-icon"></span>

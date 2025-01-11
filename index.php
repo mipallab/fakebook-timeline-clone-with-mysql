@@ -219,13 +219,13 @@ if (file_exists(__DIR__ . '/autoload.php')) {
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h2 class="modal-title fs-5">Replay Comment</h2>
+                    <h2 class="modal-title fs-5">Replay A Comment</h2>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
                 <div class="modal-body">
 
-                    <form action="" method="POST" enctype="multipart/form-data">
+                    <form id="replay-comment-form" action="" method="POST" enctype="multipart/form-data">
                         <div class="mb-3">
                             <label class="form-label" for="comment-rep-name">Comment Name</label>
                             <input class="form-control" id="comment-rep-name" type="text" placeholder="Your Name"
@@ -242,16 +242,18 @@ if (file_exists(__DIR__ . '/autoload.php')) {
                                 name="comment_rep_usr_photo">
                         </div>
                         <div class="mb-3">
-                            <input id="comment_replay_id" class="form-control" type="text" name="com_id" value="">
+                            <input id="comment_id_pass" class="form-control" type="text" name="com_id" value="">
+                            <input id="post_id_pass_re" class="form-control" type="text" name="postID" value="">
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="comment-rep-images">Images</label>
-                            <input id="comment-rep-video" class="form-control" type="file" name="comment-rep-photo">
+                            <input id="comment-rep-images" class="form-control" type="file"
+                                name="comment-rep-post-photo">
                         </div>
 
                         <div class="mb-3">
                             <input class="btn btn-primary" type="submit" name="comment-replay-submit"
-                                value="Replay Comment">
+                                value="Reply Comment">
                         </div>
                     </form>
                 </div>
@@ -361,18 +363,43 @@ if (file_exists(__DIR__ . '/autoload.php')) {
     <script type="text/javascript" src="./assets/js/functions.js"></script>
     <script src="./assets/js/ajax/insert-post.js"></script>
     <script src="./assets/js/ajax/insert-comment.js"></script>
+    <script src="./assets/js/ajax/replay-insert-comment.js"></script>
     <script src="./assets/js/ajax/timeline.js"></script>
     <script src="./assets/js/main.js"></script>
 
     <script>
-    // 
-    $(document).on("click", ".comment-item", function() {
-        const postId = $(this).attr("postId");
-        const input = document.getElementById('post_id_pass');
+        // comment id pass
+        $(document).on("click", ".comment-item", function() {
+            const postId = $(this).attr("postId");
+            const input = document.getElementById('post_id_pass');
 
-        input.value = postId;
+            // ‍send post id to comment form
+            input.value = postId;
 
-    });
+        });
+
+        // replay comment 
+        $(document).on("click", "#replay-comment-modal", function() {
+            const commentMenu = this.parentElement.parentElement.parentElement.parentElement.parentElement
+                .parentElement.parentElement.previousElementSibling.previousElementSibling;
+
+            const postID = commentMenu.firstElementChild.firstElementChild.nextElementSibling.getAttribute(
+                "postid");
+            const parent_comment_id = $(this).attr('comment_r_id');
+            const comment_id_Box = document.getElementById('comment_id_pass');
+            const post_id_Box = document.getElementById('post_id_pass_re');
+
+            // send parent comment id to replay comment form
+            comment_id_Box.value = parent_comment_id;
+
+            // send post id to reply comment form
+            post_id_Box.value = postID;
+
+            // console.log("Post id: " + JSON.stringify(postId));
+            // console.log((postId));
+            // console.log((commentMenu));
+            // console.log((commentModal));
+        });
     </script>
 </body>
 
