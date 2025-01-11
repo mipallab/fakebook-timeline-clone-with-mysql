@@ -365,24 +365,7 @@ if (file_exists(__DIR__ . '/autoload.php')) {
     <script src="./assets/js/main.js"></script>
 
     <script>
-    // document.body.addEventListener('click', function() {
-    //     // post id pass in comment form
-    //     const li = document.querySelectorAll(".comment-item");
-    //     const input = document.getElementById('post_id_pass');
-
-    //     console.log("comment-item : " + li);
-    //     console.log(input);
-
-    //     li.forEach(item => {
-    //         item.onclick = (event) => {
-    //             input.value = event.target.getAttribute('postId');
-
-    //             console.log(input);
-    //         }
-    //     });
-    // });
-
-
+    // 
     $(document).on("click", ".comment-item", function() {
         const postId = $(this).attr("postId");
         const input = document.getElementById('post_id_pass');
