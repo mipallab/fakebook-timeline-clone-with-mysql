@@ -1,29 +1,25 @@
-// Select all elements with ID showSubitem
-const showSubitems = document.querySelectorAll("#showSubitem");
+/**
+ *
+ * dropdown item toggle
+ */
+$(document).on("click", "#showSubitem", function (event) {
+  const dropDownMenu = this.previousElementSibling;
 
-// Function to handle click outside the showSubitem area
-function handleClickOutside(e) {
-  // Check if the click is outside
-  showSubitems.forEach((item) => {
-    if (
-      !item.contains(e.target) &&
-      !item.previousElementSibling.contains(e.target)
-    ) {
-      item.previousElementSibling.classList.remove("showSubitem");
+  // Toggle the class when clicking on #showSubitem
+  dropDownMenu.classList.toggle("showSubitem");
+
+  // Prevent the click from propagating to the document
+  event.stopPropagation();
+});
+
+// Click outside logic
+$(document).on("click", function (event) {
+  const openMenus = document.querySelectorAll(".showSubitem");
+  openMenus.forEach((menu) => {
+    // Check if the click is outside the dropdown and the button
+    if (!menu.contains(event.target) && event.target.id !== "showSubitem") {
+      menu.classList.remove("showSubitem");
     }
-  });
-}
-
-// Add event listeners to all showSubitems
-showSubitems.forEach((item) => {
-  item.addEventListener("click", function (e) {
-    // remove the class from all items
-    showSubitems.forEach((item) => {
-      item.previousElementSibling.classList.remove("showSubitem");
-    });
-
-    item.previousElementSibling.classList.add("showSubitem");
-    e.stopPropagation();
   });
 });
 

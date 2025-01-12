@@ -96,7 +96,9 @@ $(document).ready(function () {
                                           </a>
                                       </li>
                                       <li class="divid"></li>
-                                      <li>
+                                      <li class="delete_post" post_id = "${
+                                        item.post_id
+                                      }">
                                           <a href="#">
                                               <div class="menu-icon"></div>
                                               <span>Move trash</span>
