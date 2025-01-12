@@ -173,6 +173,33 @@ switch ($action) {
 
         break;
 
+
+    case "comment-like":
+
+        //get data
+        $comment_id = $_POST['comment_id'];
+
+        echo "<pre>";
+        print_r($_POST);
+        echo "</pre>";
+
+
+        if (!empty($comment_id)) {
+            // like data insert
+            $like_data = [
+                'comment_id'    => $comment_id,
+            ];
+
+            $likes = insertQuery("likes", $like_data, $connect);
+
+            echo $likes;
+        }
+
+        break;
+
+
+
+
         /**
          * 
          * 

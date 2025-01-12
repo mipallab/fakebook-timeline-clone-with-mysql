@@ -34,15 +34,15 @@ $(document).ready(function () {
    *
    **/
 
-  $(document).on("click", ".c", function () {
+  $(document).on("click", ".comment-like", function () {
     // get post id form timeline
-    const postId = $(this).attr("postId");
+    const commentId = $(this).attr("comment_id");
 
     $.ajax({
-      url: "./ajax/all_request.php?actiondfsd=possadt-like",
+      url: "./ajax/all_request.php?action=comment-like",
       type: "POST",
       data: {
-        postId: postId,
+        comment_id: commentId,
       },
 
       success: (data) => {

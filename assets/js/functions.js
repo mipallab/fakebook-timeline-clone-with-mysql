@@ -352,8 +352,10 @@ function renderReplies(repliesJSON) {
                             reply.reply_likes_count
                           }</span>
                           </div>
-                          <div class="like"><a href="com_like.php?like_id=">
-                                  Like</a></div>
+                          <div class="like "><span class="comment-like cursor-pointer" comment_id="${
+                            reply.reply_id
+                          }">
+                                  Like</span></div>
                           
                       </div>
               </div>
