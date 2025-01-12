@@ -19,7 +19,7 @@ if (file_exists(__DIR__ . '/autoload.php')) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="./assets/icons/favicon.ico" type="image/x-icon" />
-    <title>Ashraful Haque</title>
+    <title>Fakebook</title>
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/css/venobox.min.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="./assets/css/style.css" />
@@ -207,8 +207,6 @@ if (file_exists(__DIR__ . '/autoload.php')) {
                 <div id="timeLine" class="timeline">
 
                 </div>
-
-
             </div>
         </div>
     </div>
@@ -355,6 +353,8 @@ if (file_exists(__DIR__ . '/autoload.php')) {
     </div>
     <!-- post modal end -->
 
+
+
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
@@ -365,6 +365,7 @@ if (file_exists(__DIR__ . '/autoload.php')) {
     <script src="./assets/js/ajax/insert-comment.js"></script>
     <script src="./assets/js/ajax/replay-insert-comment.js"></script>
     <script src="./assets/js/ajax/like_insert.js"></script>
+    <script src="./assets/js/ajax/delete_post.js"></script>
     <script src="./assets/js/ajax/timeline.js"></script>
     <script src="./assets/js/main.js"></script>
 
@@ -396,6 +397,8 @@ if (file_exists(__DIR__ . '/autoload.php')) {
             // send post id to reply comment form
             post_id_Box.value = postID;
         });
+
+        // delete a post
     </script>
 </body>
 

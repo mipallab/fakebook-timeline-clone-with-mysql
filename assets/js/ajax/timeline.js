@@ -6,13 +6,15 @@ $(document).ready(function () {
       type: "POST",
       dataType: "json",
       success: (data) => {
-        // console.log(data);
+        console.log(data);
 
-        function timeLineFetch(item) {
-          let post_image = JSON.parse(item.post_image) || "";
-          let post_video = JSON.parse(item.post_video_url) || "";
+        if (data.length != 0) {
+          // if has posts
+          function timeLineFetch(item) {
+            let post_image = JSON.parse(item.post_image) || "";
+            let post_video = JSON.parse(item.post_video_url) || "";
 
-          return `<div class="user-post">
+            return `<div class="user-post">
                       <div class="user-post-header">
                           <div class="post-info">
                               <img src="./assets/images/profile-images/${
@@ -213,10 +215,20 @@ $(document).ready(function () {
                       </div>
                   </div>
           `;
-        }
+          }
 
-        $timeLineAllData = data.map(timeLineFetch);
-        $("#timeLine").html($timeLineAllData);
+          $timeLineAllData = data.map(timeLineFetch);
+          $("#timeLine").html($timeLineAllData);
+        } else {
+          // if has no posts
+          $("#timeLine").html(`
+                <div class="create-post">
+                    <div class="card-header">
+                        <h2 class="text-center">No Post found! 😔😔😔</h2>
+                    </div>
+                </div>
+            `);
+        }
       },
       error: (error) => {
         console.log(error);

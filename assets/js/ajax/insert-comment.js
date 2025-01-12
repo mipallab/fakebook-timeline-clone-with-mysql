@@ -38,6 +38,7 @@ $(document).ready(function () {
             // form model close
             $(".btn-close").click();
 
+            // reload all post
             timeLineAllData();
 
             break;

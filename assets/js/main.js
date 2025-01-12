@@ -23,7 +23,6 @@ $(document).on("click", function (event) {
   });
 });
 
-// detect clicks outside
 document.addEventListener("click", handleClickOutside);
 
 var venobox = new VenoBox({

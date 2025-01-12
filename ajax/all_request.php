@@ -78,6 +78,19 @@ switch ($action) {
 
         break;
 
+        /**
+         * 
+         * 
+         * 
+         * #########################################
+         *  ---------- Insert comment -------------
+         * ########################################
+         * 
+         * 
+         * 
+         * 
+         */
+
     case "insert-comment":
         // get data
         $comm_name = $_POST['comm_usr_name'] ?? null;
@@ -170,7 +183,18 @@ switch ($action) {
         }
 
         break;
-
+        /**
+         * 
+         * 
+         * 
+         * #########################################
+         *  ---------- comment Like Insert -------------
+         * ########################################
+         * 
+         * 
+         * 
+         * 
+         */
 
     case "comment-like":
 
@@ -190,7 +214,33 @@ switch ($action) {
 
         break;
 
+        /**
+         * 
+         * 
+         * 
+         * #########################################
+         *  ---------- delete a post  -------------
+         * ########################################
+         * 
+         * 
+         * 
+         * 
+         */
 
+    case "delete-post":
+
+        //get data
+        $post_id = $_POST['post_id'];
+
+        // echo $post_id;
+
+        $deletePost = deletePostWithMedia($post_id, $connect);
+
+        echo "<pre>";
+        print_r($deletePost);
+        echo "</pre>";
+
+        break;
 
 
         /**
@@ -287,7 +337,7 @@ switch ($action) {
         if ($all_post_data['status'] == 'success') {
             echo json_encode($all_post_data['data']);
         } else {
-            echo  "Somgthing wrong. post all data not found";
+            echo  json_encode("No Post Found!");
         }
 
 
