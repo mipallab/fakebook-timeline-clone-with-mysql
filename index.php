@@ -242,8 +242,8 @@ if (file_exists(__DIR__ . '/autoload.php')) {
                                 name="comment_rep_usr_photo">
                         </div>
                         <div class="mb-3">
-                            <input id="comment_id_pass" class="form-control" type="text" name="com_id" value="">
-                            <input id="post_id_pass_re" class="form-control" type="text" name="postID" value="">
+                            <input id="comment_id_pass" class="form-control" type="hidden" name="com_id" value="">
+                            <input id="post_id_pass_re" class="form-control" type="hidden" name="postID" value="">
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="comment-rep-images">Images</label>
@@ -290,7 +290,7 @@ if (file_exists(__DIR__ . '/autoload.php')) {
                                 name="comment_pro_photo">
                         </div>
                         <div class="mb-3">
-                            <input id="post_id_pass" class="form-control" type="text" name="post_id" value="">
+                            <input id="post_id_pass" class="form-control" type="hidden" name="post_id" value="">
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="comment-images">Comment Image</label>
@@ -396,20 +396,6 @@ if (file_exists(__DIR__ . '/autoload.php')) {
             // send post id to reply comment form
             post_id_Box.value = postID;
         });
-
-        // $(document).on("click", ".comment-like", function() {
-        //     const commentMenu = this.parentElement.parentElement.parentElement.parentElement.parentElement
-        //         .parentElement.parentElement.previousElementSibling.previousElementSibling;
-
-        //     const postID = commentMenu.firstElementChild.firstElementChild.nextElementSibling.getAttribute(
-        //         "postid");
-
-
-        //     const commentLikeItem = $(this).attr("post_r_id", postID);
-        // });
-
-
-        // const postId = $()
     </script>
 </body>
 

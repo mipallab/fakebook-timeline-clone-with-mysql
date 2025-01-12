@@ -6,7 +6,7 @@ $(document).ready(function () {
       type: "POST",
       dataType: "json",
       success: (data) => {
-        console.log(data);
+        // console.log(data);
 
         function timeLineFetch(item) {
           let post_image = JSON.parse(item.post_image) || "";

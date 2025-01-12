@@ -18,7 +18,7 @@ $(document).ready(function () {
       },
 
       success: (data) => {
-        console.log(data);
+        // console.log(data);
 
         // timeline reload
         timeLineAllData();
@@ -46,7 +46,7 @@ $(document).ready(function () {
       },
 
       success: (data) => {
-        console.log(data);
+        // console.log(data);
 
         // timeline reload
         timeLineAllData();

@@ -14,11 +14,11 @@ $(document).ready(function () {
       contentType: false,
       dataType: "json",
       success: function (data) {
-        console.log(data);
+        // console.log(data);
 
         let data_status = data.status;
 
-        console.log(data_status);
+        // console.log(data_status);
 
         switch (data_status) {
           // success message show

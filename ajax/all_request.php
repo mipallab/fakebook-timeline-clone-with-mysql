@@ -157,7 +157,6 @@ switch ($action) {
         //get data
         $postId = $_POST['postId'];
 
-        echo "Post Id is: " . $postId;
 
         if (!empty($postId)) {
             // like data insert
@@ -166,9 +165,8 @@ switch ($action) {
                 'comment_id'    => NULL,
             ];
 
+            // insert like post 
             $likes = insertQuery("likes", $like_data, $connect);
-
-            echo $likes;
         }
 
         break;
@@ -179,20 +177,15 @@ switch ($action) {
         //get data
         $comment_id = $_POST['comment_id'];
 
-        echo "<pre>";
-        print_r($_POST);
-        echo "</pre>";
-
-
+        // if comment id 
         if (!empty($comment_id)) {
             // like data insert
             $like_data = [
                 'comment_id'    => $comment_id,
             ];
 
+            // comment insert like 
             $likes = insertQuery("likes", $like_data, $connect);
-
-            echo $likes;
         }
 
         break;
