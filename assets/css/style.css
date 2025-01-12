@@ -1696,3 +1696,12 @@ span.camera-icon {
 .reply-user-name:hover {
   text-decoration: underline;
 }
+
+.reply-text {
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}

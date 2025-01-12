@@ -181,7 +181,9 @@ $(document).ready(function () {
                           <div class="divider-0"></div>
                           <div class="comments-menu">
                               <ul>
-                                  <li>
+                                  <li class="postLike" postId = "${
+                                    item.post_id
+                                  }">
                                       <span class="comment-icon"></span>
                                       <span>Like</span>
                                   </li>

@@ -364,42 +364,52 @@ if (file_exists(__DIR__ . '/autoload.php')) {
     <script src="./assets/js/ajax/insert-post.js"></script>
     <script src="./assets/js/ajax/insert-comment.js"></script>
     <script src="./assets/js/ajax/replay-insert-comment.js"></script>
+    <script src="./assets/js/ajax/like_insert.js"></script>
     <script src="./assets/js/ajax/timeline.js"></script>
     <script src="./assets/js/main.js"></script>
 
     <script>
-        // comment id pass
-        $(document).on("click", ".comment-item", function() {
-            const postId = $(this).attr("postId");
-            const input = document.getElementById('post_id_pass');
+    // comment id pass
+    $(document).on("click", ".comment-item", function() {
+        const postId = $(this).attr("postId");
+        const input = document.getElementById('post_id_pass');
 
-            // ‍send post id to comment form
-            input.value = postId;
+        // ‍send post id to comment form
+        input.value = postId;
 
-        });
+    });
 
-        // replay comment 
-        $(document).on("click", "#replay-comment-modal", function() {
-            const commentMenu = this.parentElement.parentElement.parentElement.parentElement.parentElement
-                .parentElement.parentElement.previousElementSibling.previousElementSibling;
+    // replay comment 
+    $(document).on("click", "#replay-comment-modal", function() {
+        const commentMenu = this.parentElement.parentElement.parentElement.parentElement.parentElement
+            .parentElement.parentElement.previousElementSibling.previousElementSibling;
 
-            const postID = commentMenu.firstElementChild.firstElementChild.nextElementSibling.getAttribute(
-                "postid");
-            const parent_comment_id = $(this).attr('comment_r_id');
-            const comment_id_Box = document.getElementById('comment_id_pass');
-            const post_id_Box = document.getElementById('post_id_pass_re');
+        const postID = commentMenu.firstElementChild.firstElementChild.nextElementSibling.getAttribute(
+            "postid");
+        const parent_comment_id = $(this).attr('comment_r_id');
+        const comment_id_Box = document.getElementById('comment_id_pass');
+        const post_id_Box = document.getElementById('post_id_pass_re');
 
-            // send parent comment id to replay comment form
-            comment_id_Box.value = parent_comment_id;
+        // send parent comment id to replay comment form
+        comment_id_Box.value = parent_comment_id;
 
-            // send post id to reply comment form
-            post_id_Box.value = postID;
+        // send post id to reply comment form
+        post_id_Box.value = postID;
+    });
 
-            // console.log("Post id: " + JSON.stringify(postId));
-            // console.log((postId));
-            // console.log((commentMenu));
-            // console.log((commentModal));
-        });
+    // $(document).on("click", ".comment-like", function() {
+    //     const commentMenu = this.parentElement.parentElement.parentElement.parentElement.parentElement
+    //         .parentElement.parentElement.previousElementSibling.previousElementSibling;
+
+    //     const postID = commentMenu.firstElementChild.firstElementChild.nextElementSibling.getAttribute(
+    //         "postid");
+
+
+    //     const commentLikeItem = $(this).attr("post_r_id", postID);
+    // });
+
+
+    // const postId = $()
     </script>
 </body>
 

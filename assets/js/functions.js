@@ -289,16 +289,23 @@ function renderComments(commentsArray) {
                       )}</p>
                       
                       <div class="com-info">
-                          <div class="lcount"><span>${
-                            comment.comment_likes_count
-                          }</span>
+                          <div class="lcount">
+                              <span>${comment.comment_likes_count}</span>
                           </div>
-                          <div class="like"><a href="com_like.php?like_id=">
-                                  Like</a></div>
-                          <div class="replay"><span id="replay-comment-modal" data-bs-target="#commentReplayModal"
+                          <div class="like">
+                            <span class="cursor-pointer comment-like" comment_id="${
+                              comment.comment_id
+                            }">
+                                    Like
+                            </span>
+                          </div>
+                          <div class="replay">
+                              <span id="replay-comment-modal" data-bs-target="#commentReplayModal"
                                   data-bs-toggle="modal" comment_r_id="${
                                     comment.comment_id
-                                  }">replay</span>
+                                  }">
+                                  replay
+                              </span>
                           </div>
                       </div>
                     </div>

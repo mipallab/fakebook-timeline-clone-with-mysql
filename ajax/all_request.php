@@ -140,9 +140,50 @@ switch ($action) {
         break;
 
         /**
+         * 
+         * 
+         * 
+         * #########################################
+         *  ---------- Post Like Insert -------------
+         * ########################################
+         * 
+         * 
+         * 
+         * 
+         */
+
+    case "post-like":
+
+        //get data
+        $postId = $_POST['postId'];
+
+        echo "Post Id is: " . $postId;
+
+        if (!empty($postId)) {
+            // like data insert
+            $like_data = [
+                "post_id"       => $postId,
+                'comment_id'    => NULL,
+            ];
+
+            $likes = insertQuery("likes", $like_data, $connect);
+
+            echo $likes;
+        }
+
+        break;
+
+        /**
+         * 
+         * 
+         * 
          * #########################################
          *  ---------- Replay Comment -------------
          * ########################################
+         * 
+         * 
+         * 
+         * 
          */
 
     case "replay-comment":
@@ -200,9 +241,14 @@ switch ($action) {
         break;
 
         /**
+         * 
+         * 
          * #########################################
          *  ---------- Show All Post -------------
          * ########################################
+         * 
+         * 
+         * 
          */
 
     case "all-data":
